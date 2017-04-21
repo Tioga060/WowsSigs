@@ -25,7 +25,7 @@ SECRET_KEY = '$c#)@f@nv88ykorct)hcj-xqw7pon9%f#0yibet_bod-r5n&f^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['162.243.239.164']
 
 
 # Application definition
@@ -99,4 +99,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/wows/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'wows/')
