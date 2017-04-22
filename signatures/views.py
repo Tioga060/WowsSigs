@@ -6,6 +6,6 @@ def testview(request):
   newplayer = Player(playerid = '111',
     username = 'swagman',
     signature={"test":"test"})
-  newplayer.insert_one()
-
+  newplayer.save()
+  print str(request)
   return HttpResponse("<h1>Saved!</h1>")
