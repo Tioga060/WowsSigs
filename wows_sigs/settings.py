@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from .local_settings.py import *
 
 
 SESSION_ENGINE = 'mongoengine.django.sessions' # optional
@@ -22,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
+SECRET_KEY = '$c#)@f@nv845343(*7)cj-xqweesssdfsdvdfyihfbet_sdfaser5nio.kj^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'wows_sigs.wsgi.application'
 DATABASES = {
    'default' : {
       'ENGINE' : 'django_mongodb_engine',
-      'NAME' : 'my_database'
+      'NAME' : 'wows_sigs'
    }
 }
 
