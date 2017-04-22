@@ -1,4 +1,5 @@
-from PIL import Image,gifmaker
+from PIL import Image
+import gifmaker
 import io
 import pathlib
 import copy
