@@ -1,11 +1,11 @@
 # Create your views here.
 from django.http import HttpResponse
+from django.conf import settings as djangoSettings
+from signatures import *
 from models import *
 
 def testview(request):
-  newplayer = Player(playerid = '111',
-    username = 'swagman',
-    signature={"test":"test"})
-  newplayer.save()
-  print str(request)
-  return HttpResponse("<h1>Saved!</h1>")
+    inpath = djangoSettings.MEDIA_ROOT+"backgrounds/test.gif"
+    outpath = djangoSettings.STATIC_ROOT+"signatures/testout.gif"
+    signatures.createSignatureGif(inpath, outpath, {})
+    return HttpResponse("<h1>Resized Gif</h1>")
