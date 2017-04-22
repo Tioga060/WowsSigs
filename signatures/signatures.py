@@ -1,5 +1,5 @@
-from Pillow import Image
-import gifmaker
+import PIL
+from PIL import Image,gifmaker
 import io
 import pathlib
 import copy
