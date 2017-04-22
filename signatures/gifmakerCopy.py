@@ -76,6 +76,7 @@ def makedelta(fp, sequence):
         if not previous:
 
             # global header
+            print str(getheader(im))
             for s in getheader(im)[0] + getdata(im):
                 fp.write(s)
 
