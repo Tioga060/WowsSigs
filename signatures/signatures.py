@@ -1,4 +1,4 @@
-import Image
+from Pillow import Image
 import gifmaker
 import io
 import pathlib
