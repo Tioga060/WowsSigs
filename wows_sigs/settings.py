@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import mongoengine
 from .local_settings.py import *
 
 
@@ -77,14 +76,12 @@ WSGI_APPLICATION = 'wows_sigs.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': '',
-    },
+   'default' : {
+      'ENGINE' : 'django_mongodb_engine',
+      'NAME' : 'my_database'
+   }
 }
-SESSION_ENGINE = 'mongoengine.django.sessions'
-AUTHENTICATION_BACKENDS = (
-    'mongoengine.django.auth.MongoEngineBackend',
-)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
