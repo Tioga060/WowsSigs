@@ -30,5 +30,5 @@ def createSignatureGif(inpath, outpath, stats):
         frames.append(frame.copy())
 
     fp = open(outpath, "wb")
-    gifmaker.makedelta(fp, frames)
+    gifmakerCopy.makedelta(fp, frames)
     fp.close()
