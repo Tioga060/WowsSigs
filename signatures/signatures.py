@@ -26,7 +26,7 @@ def createSignatureGif(inpath, outpath, stats):
     frames = []
 
     for i, frame in enumerate(iter_frames(im)):
-        frame.resize(size, PIL.Image.LANCZOS)
+        frame.resize(size, Image.LANCZOS)
         frames.append(frame.copy())
 
     fp = open(outpath, "wb")
