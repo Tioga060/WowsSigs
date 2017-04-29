@@ -25,18 +25,20 @@ def extractGif(im):
     pallet = False
     frames = []
     headers = []
-    while 1:
-        im.seek(0)
-        print type(im.extensionHeader)
-        imframe = im.copy()
-        if i == 0:
-            palette = imframe.getpalette()
-        else:
-            imframe.putpalette(palette)
-        frames.append(imframe)
-        headers.append(im.extensionHeader)
+    try:
+        while 1:
+            im.seek(0)
+            print im.extensionHeader
+            imframe = im.copy()
+            if i == 0:
+                palette = imframe.getpalette()
+            else:
+                imframe.putpalette(palette)
+            frames.append(imframe)
+            headers.append(im.extensionHeader)
+    except EOFError:
+        return (frames, headers)
 
-    return (frames, headers)
 
 def createSignatureGif(inpath, outpath, stats):
     im = Image.open(inpath)
@@ -44,7 +46,6 @@ def createSignatureGif(inpath, outpath, stats):
     size = 468,100
     frames, headers = extractGif(im)
     print "finished extracting"
-    print headers
     outFrames = []
 
     for frame in frames:
