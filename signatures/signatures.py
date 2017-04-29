@@ -36,6 +36,7 @@ def extractGif(im):
                 imframe.putpalette(palette)
             frames.append(imframe)
             headers.append(im.extensionHeader)
+            i += 1;
         except EOFError:
             return (frames, headers)
 
