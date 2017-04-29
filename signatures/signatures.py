@@ -60,7 +60,7 @@ def createSignatureGif(inpath, outpath, stats):
 def applyStatsToImage(im):
     overlay = Image.open("small.png")
     w, h = overlay.size
-    w = w*100.0/h
+    w = (int)(w*100.0/h)
     h = 100
     overlay = overlay.resize((w,h), Image.LANCZOS)
     im = Image.alpha_composite(im, overlay)
