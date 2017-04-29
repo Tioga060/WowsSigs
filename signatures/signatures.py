@@ -43,18 +43,29 @@ def extractGif(im):
 
 def createSignatureGif(inpath, outpath, stats):
     im = Image.open(inpath)
-    print "finished opening"
+
     size = 468,100
     frames, headers = extractGif(im)
-    print "finished extracting"
+
     outFrames = []
 
     for frame in frames:
-        outFrames.append(frame.resize(size, Image.LANCZOS))
+        f = frame.resize(size, Image.LANCZOS)
+        outFrames.append(applyStatsToImage(im))
 
     fp = open(outpath, "wb")
     gifmakerCopy.makedelta(fp, outFrames, headers)
     fp.close()
+
+def applyStatsToImage(im):
+    overlay = Image.open("small.png")
+    w, h = overlay.size
+    w = w*100.0/h
+    h = 100
+    overlay = overlay.resize((w,h), Image.LANCZOS)
+    im = Image.alpha_composite(im, overlay)
+    return im
+
 
 if __name__ == "__main__":
     print "creating signatures"
