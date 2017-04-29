@@ -38,9 +38,11 @@ def extractGif(im):
 
 def createSignatureGif(inpath, outpath, stats):
     im = Image.open(inpath)
-    print "finishe opening"
+    print "finished opening"
     size = 468,100
     frames, headers = extractGif(im)
+    print "finished extracting"
+    print headers
     outFrames = []
 
     for frame in frames:
