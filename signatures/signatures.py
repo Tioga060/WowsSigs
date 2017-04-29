@@ -53,7 +53,7 @@ def createSignatureGif(inpath, outpath, stats):
         outFrames.append(frame.resize(size, Image.LANCZOS))
 
     fp = open(outpath, "wb")
-    gifmakerCopy.makedelta(fp, frames, headers)
+    gifmakerCopy.makedelta(fp, outFrames, headers)
     fp.close()
 
 if __name__ == "__main__":
