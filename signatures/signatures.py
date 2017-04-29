@@ -28,7 +28,7 @@ def extractGif(im):
 
     while 1:
         try:
-            im.seek(0)
+            im.seek(i)
             imframe = im.copy()
             if i == 0:
                 palette = imframe.getpalette()
