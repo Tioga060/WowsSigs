@@ -76,11 +76,12 @@ def makedelta(fp, sequence, headers):
 
             # global header
 
-            for s in getheader(im)[0] + getdata(im)
+            for s in getheader(im)[0]:
                 fp.write(s)
-            #for s in headers[frames]
+            #for s in headers[frames]:
             #    fp.write(s)
-
+            for s in getdata(im):
+                fp.write(s)
             print headers[frames]
         else:
 
