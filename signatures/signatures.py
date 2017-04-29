@@ -58,7 +58,7 @@ def createSignatureGif(inpath, outpath, stats):
     fp.close()
 
 def applyStatsToImage(im):
-    im.putalpha(255)
+    im = im.convert("RGBA")
     overlay = Image.open("small.png")
     w, h = overlay.size
     w = (int)(w*100.0/h)
