@@ -82,7 +82,7 @@ def makedelta(fp, sequence, headers):
             #    fp.write(s)
             for s in getdata(im):
                 fp.write(s)
-            print headers
+            print headers[frames]
         else:
 
             # delta frame
