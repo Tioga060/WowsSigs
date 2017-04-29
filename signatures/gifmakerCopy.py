@@ -78,9 +78,9 @@ def makedelta(fp, sequence, headers):
 
             for s in getheader(im)[0]:
                 fp.write(s)
-            fp.write(b"\x21")
-            fp.write(b"\xF9")
-            fp.write(b"\x04")
+            fp.write(b"\x21\xF9\x04")
+            #fp.write(b"\xF9")
+            #fp.write(b"\x04")
             fp.write(headers[frames][:4])
             fp.write(b"\x00")
             for s in getdata(im):
