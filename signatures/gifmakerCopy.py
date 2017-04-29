@@ -76,17 +76,9 @@ def makedelta(fp, sequence, headers):
 
             # global header
 
-            for s in getheader(im)[0]:
-                fp.write(s)
-            fp.write(b"\x21\xF9\x04")
-            #fp.write(b"\xF9")
-            #fp.write(b"\x04")
-            fp.write(headers[frames][:4])
-            fp.write(b"\x00")
-            for s in getdata(im):
+            for s in getheader(im)[0] + headers[frames] + getdata(im):
                 fp.write(s)
 
-            #print headers[frames]
         else:
 
             # delta frame
@@ -95,13 +87,9 @@ def makedelta(fp, sequence, headers):
             bbox = delta.getbbox()
 
             if bbox:
-                fp.write(b"\x21")
-                fp.write(b"\xF9")
-                fp.write(b"\x04")
-                fp.write(headers[frames][:4])
-                fp.write(b"\x00")
+
                 # compress difference
-                for s in getdata(im.crop(bbox), offset = bbox[:2]):
+                for s in headers[frames] + getdata(im.crop(bbox), offset = bbox[:2]):
                     fp.write(s)
 
             else:
