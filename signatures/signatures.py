@@ -27,6 +27,7 @@ def extractGif(im):
     headers = []
     while 1:
         im.seek(0)
+        print im.extensionHeader
         imframe = im.copy()
         if i == 0:
             palette = imframe.getpalette()
@@ -34,7 +35,7 @@ def extractGif(im):
             imframe.putpalette(palette)
         frames.append(imframe)
         headers.append(im.extensionHeader)
-        print im.extensionHeader
+
     return (frames, headers)
 
 def createSignatureGif(inpath, outpath, stats):
