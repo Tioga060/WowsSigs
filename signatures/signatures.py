@@ -20,14 +20,34 @@ def iter_frames(im):
     except EOFError:
         pass
 
+def extractGif(im):
+    i=0
+    pallet = False
+    frames = []
+    headers = []
+    while 1:
+        im.seek(0)
+        imframe = im.copy()
+        if i == 0:
+            palette = imframe.getpalette()
+        else:
+            imframe.putpalette(palette)
+        frames.append(imframe)
+        headers.append(im.extensionHeader)
+    return (frames, headers)
+
 def createSignatureGif(inpath, outpath, stats):
     im = Image.open(inpath)
     size = 468,100
-    frames = []
+    frames, headers = extractGif(im)
+    outFrames = []
 
-    for i, frame in enumerate(iter_frames(im)):
-        frames.append(frame.resize(size, Image.LANCZOS))
+    for frame in frames:
+        outFrames.append(frame.resize(size, Image.LANCZOS))
 
     fp = open(outpath, "wb")
-    gifmakerCopy.makedelta(fp, frames)
+    gifmakerCopy.makedelta(fp, frames, headers)
     fp.close()
+
+if __name__ == "__main__":
+    createSignatureGif("input.gif", "output2.gif", False)

@@ -1,5 +1,8 @@
-Pillow
 git+https://github.com/django-nonrel/django@nonrel-1.5
 git+https://github.com/django-nonrel/djangotoolbox
 install git+https://github.com/django-nonrel/mongodb-engine
+git+https://github.com/Tioga060/Pillow.git
 mongoengine
+sudo apt-get install zlib1g-dev
+sudo apt-get install libpng-dev
+sudo apt-get install libjpeg-dev

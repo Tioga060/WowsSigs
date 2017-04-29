@@ -61,13 +61,12 @@ class image_sequence:
 # --------------------------------------------------------------------
 # straightforward delta encoding
 
-def makedelta(fp, sequence):
+def makedelta(fp, sequence, headers):
     """Convert list of image frames to a GIF animation file"""
 
     frames = 0
 
     previous = None
-
     for im in sequence:
 
         #
@@ -76,10 +75,14 @@ def makedelta(fp, sequence):
         if not previous:
 
             # global header
-            print str(getheader(im))
-            for s in getheader(im)[0] + getdata(im):
-                fp.write(s)
 
+            for s in getheader(im)[0]
+                fp.write(s)
+            #for s in headers[frames]
+            #    fp.write(s)
+            for s in getdata(im):
+                fp.write(s)
+            print headers[frames]
         else:
 
             # delta frame
