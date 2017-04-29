@@ -78,9 +78,10 @@ def makedelta(fp, sequence, headers):
 
             for s in getheader(im)[0]:
                 fp.write(s)
-            fp.write(headers[frames])
+
             for s in getdata(im):
                 fp.write(s)
+            fp.write(headers[frames])
             #print headers[frames]
         else:
 
@@ -90,10 +91,11 @@ def makedelta(fp, sequence, headers):
             bbox = delta.getbbox()
 
             if bbox:
-                fp.write(headers[frames])
+
                 # compress difference
                 for s in getdata(im.crop(bbox), offset = bbox[:2]):
                     fp.write(s)
+                fp.write(headers[frames])
 
             else:
                 # FIXME: what should we do in this case?
