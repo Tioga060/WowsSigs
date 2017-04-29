@@ -76,9 +76,11 @@ def makedelta(fp, sequence, headers):
 
             # global header
 
-            for s in getheader(im)[0] + headers[frames] + getdata(im):
+            for s in getheader(im)[0]:
                 fp.write(s)
-
+            fp.write(b"\x21\xFF\x0B\x4E\x45\x54\x53\x43\x41\x50\x45\x32\x2E\x30\x03\x01\x05\x00\x00") #Application Extension netscape looper
+            for s in headers[frames] + getdata(im):
+                fp.write(s)
         else:
 
             # delta frame
