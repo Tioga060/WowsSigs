@@ -63,7 +63,8 @@ def applyStatsToImage(im):
     w, h = overlay.size
     w = (int)(w*100.0/h)
     h = 100
-    overlay = overlay.resize((w,h), Image.LANCZOS)
+    size = w,h
+    overlay = overlay.resize(size, Image.LANCZOS)
     #im = Image.alpha_composite(im, overlay)
     return im.paste(overlay)
     #return im
