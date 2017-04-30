@@ -62,7 +62,7 @@ class image_sequence:
 # straightforward delta encoding
 
 #Header reconstruction - not finished
-def reconstructHeader(im):
+def reconstructHeader(im, header):
     extensionHeader = [b"\x21\xF9\x04"]
 
     #note: not using the served bits or the input flag
@@ -85,7 +85,7 @@ def reconstructHeader(im):
 
     extensionHeader.append(b"\x00")
     print extensionHeader
-    print(im.extensionHeader.decode('hex'))
+    print(header.decode('hex'))
     return extensionHeader
 
 def makedelta(fp, sequence, headers):
