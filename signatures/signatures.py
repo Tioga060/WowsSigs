@@ -24,7 +24,7 @@ def extractGif(im):
     i=0
     pallet = False
     frames = []
-    #headers = []
+    headers = []
 
     while 1:
         try:
