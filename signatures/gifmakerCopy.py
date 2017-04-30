@@ -88,7 +88,7 @@ def reconstructHeader(im):
     print(im.extensionHeader.decode('hex'))
     return extensionHeader
 
-def makedelta(fp, sequence):
+def makedelta(fp, sequence, headers):
     """Convert list of image frames to a GIF animation file"""
 
     frames = 0
@@ -107,7 +107,7 @@ def makedelta(fp, sequence):
                 fp.write(s)
             fp.write(b"\x21\xFF\x0B\x4E\x45\x54\x53\x43\x41\x50\x45\x32\x2E\x30\x03\x01\x00\x00\x00") #Application Extension netscape looper
 
-            for s in reconstructHeader(im) + getdata(im):
+            for s in reconstructHeader(im,headers[frames]) + getdata(im):
                 fp.write(s)
         else:
 
@@ -119,7 +119,7 @@ def makedelta(fp, sequence):
             if bbox:
 
                 # compress difference
-                for s in reconstructHeader(im) + getdata(im.crop(bbox), offset = bbox[:2]):
+                for s in reconstructHeader(im,headers[frames]) + getdata(im.crop(bbox), offset = bbox[:2]):
                     fp.write(s)
 
             else:

@@ -35,17 +35,17 @@ def extractGif(im):
             else:
                 imframe.putpalette(palette)
             frames.append(imframe)
-            #headers.append(im.extensionHeader)
+            headers.append(im.extensionHeader)
             i += 1;
         except EOFError:
-            return frames
+            return frames, headers
 
 
 def createSignatureGif(inpath, outpath, stats):
     im = Image.open(inpath)
 
     size = 468,100
-    frames = extractGif(im)
+    frames, headers = extractGif(im)
 
     outFrames = []
 
@@ -55,7 +55,7 @@ def createSignatureGif(inpath, outpath, stats):
         outFrames.append(f)
 
     fp = open(outpath, "wb")
-    gifmakerCopy.makedelta(fp, outFrames)
+    gifmakerCopy.makedelta(fp, outFrames, headers)
     fp.close()
 
 def applyStatsToImage(im):
