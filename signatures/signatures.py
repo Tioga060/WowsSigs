@@ -73,4 +73,5 @@ def applyStatsToImage(im):
 
 if __name__ == "__main__":
     print "creating signatures"
-    createSignatureGif("C:\Users\Jeff\Documents\git\wows_sigs\signatures\input.gif", "C:\Users\Jeff\Documents\git\wows_sigs\signatures\output2.gif", False)
+    #createSignatureGif("C:\Users\Jeff\Documents\git\wows_sigs\signatures\input.gif", "C:\Users\Jeff\Documents\git\wows_sigs\signatures\output2.gif", False)
+    createSignatureGif("input.gif", "output2.gif", False)
