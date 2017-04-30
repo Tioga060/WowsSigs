@@ -41,7 +41,7 @@
 
 from PIL import Image, ImageChops
 import string
-
+import binascii
 from PIL.GifImagePlugin import getheader, getdata
 
 # --------------------------------------------------------------------
@@ -61,7 +61,34 @@ class image_sequence:
 # --------------------------------------------------------------------
 # straightforward delta encoding
 
-def makedelta(fp, sequence, headers):
+#Header reconstruction - not finished
+def reconstructHeader(im):
+    extensionHeader = [b"\x21\xF9\x04"]
+
+    #note: not using the served bits or the input flag
+    flags = 0b00000000
+    transp = 0b00000000
+    if "transparency" in im.info:
+        flags = flags | 0b00000001
+        transp = im.info["transparency"]
+    if hasattr(im, "disposal_method"):
+        flags = flags | (im.disposal_method<<2)
+
+    extensionHeader.append(binascii.unhexlify(format(flags & 0xff, '02x')))
+
+
+    delay = im.info["duration"]/10
+
+    extensionHeader.append(binascii.unhexlify(format(delay & 0xff, '04x')))
+    extensionHeader.append(binascii.unhexlify(format(transp & 0xff, '02x')))
+
+
+    extensionHeader.append(b"\x00")
+    print extensionHeader
+    print(im.extensionHeader)
+    return extensionHeader
+
+def makedelta(fp, sequence):
     """Convert list of image frames to a GIF animation file"""
 
     frames = 0
@@ -78,8 +105,9 @@ def makedelta(fp, sequence, headers):
 
             for s in getheader(im)[0]:
                 fp.write(s)
-            fp.write(b"\x21\xFF\x0B\x4E\x45\x54\x53\x43\x41\x50\x45\x32\x2E\x30\x03\x01\x05\x00\x00") #Application Extension netscape looper
-            for s in headers[frames] + getdata(im):
+            fp.write(b"\x21\xFF\x0B\x4E\x45\x54\x53\x43\x41\x50\x45\x32\x2E\x30\x03\x01\x00\x00\x00") #Application Extension netscape looper
+
+            for s in reconstructHeader(im) + getdata(im):
                 fp.write(s)
         else:
 
@@ -91,7 +119,7 @@ def makedelta(fp, sequence, headers):
             if bbox:
 
                 # compress difference
-                for s in headers[frames] + getdata(im.crop(bbox), offset = bbox[:2]):
+                for s in reconstructHeader(im) + getdata(im.crop(bbox), offset = bbox[:2]):
                     fp.write(s)
 
             else:

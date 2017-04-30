@@ -24,7 +24,7 @@ def extractGif(im):
     i=0
     pallet = False
     frames = []
-    headers = []
+    #headers = []
 
     while 1:
         try:
@@ -35,26 +35,27 @@ def extractGif(im):
             else:
                 imframe.putpalette(palette)
             frames.append(imframe)
-            headers.append(im.extensionHeader)
+            #headers.append(im.extensionHeader)
             i += 1;
         except EOFError:
-            return (frames, headers)
+            return frames
 
 
 def createSignatureGif(inpath, outpath, stats):
     im = Image.open(inpath)
 
     size = 468,100
-    frames, headers = extractGif(im)
+    frames = extractGif(im)
 
     outFrames = []
 
     for frame in frames:
         f = frame.resize(size, Image.LANCZOS)
-        outFrames.append(applyStatsToImage(im))
+        #outFrames.append(applyStatsToImage(f))
+        outFrames.append(f)
 
     fp = open(outpath, "wb")
-    gifmakerCopy.makedelta(fp, outFrames, headers)
+    gifmakerCopy.makedelta(fp, outFrames)
     fp.close()
 
 def applyStatsToImage(im):
@@ -72,4 +73,4 @@ def applyStatsToImage(im):
 
 if __name__ == "__main__":
     print "creating signatures"
-    createSignatureGif("input.gif", "output2.gif", False)
+    createSignatureGif("C:\Users\Jeff\Documents\git\wows_sigs\signatures\input.gif", "C:\Users\Jeff\Documents\git\wows_sigs\signatures\output2.gif", False)
