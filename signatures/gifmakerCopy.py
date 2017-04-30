@@ -85,8 +85,7 @@ def reconstructHeader(im, header):
 
     extensionHeader.append(b"\x00")
     print extensionHeader
-    for i in header:
-        print i
+    print header[1].decode('hex')
     return extensionHeader
 
 def makedelta(fp, sequence, headers):
