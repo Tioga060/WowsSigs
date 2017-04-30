@@ -78,10 +78,9 @@ def reconstructHeader(im, header):
 
 
     delay = im.info["duration"]/10
-    delayflag = format(delay & 0xff, '04x')
-    print delayflag[4:8]
-    print delayflag[0:4]
-    extensionHeader.append(binascii.unhexlify(delayflag[4:8]+delayflag[0:4]))
+    delayflag = format(delay & 0xffff, '04x')
+    print delayflag
+    extensionHeader.append(binascii.unhexlify(delayflag))
     extensionHeader.append(binascii.unhexlify(format(transp & 0xff, '02x')))
 
 
