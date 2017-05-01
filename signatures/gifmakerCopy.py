@@ -62,7 +62,7 @@ class image_sequence:
 # straightforward delta encoding
 
 #Header reconstruction - not finished
-def reconstructHeader(im, header):
+def createApplicationExtension(im):
     extensionHeader = [b"\x21\xF9\x04"]
 
     #note: not using the served bits or the input flag
@@ -74,22 +74,53 @@ def reconstructHeader(im, header):
     if hasattr(im, "disposal_method"):
         flags = flags | (im.disposal_method<<2)
 
+
     extensionHeader.append(binascii.unhexlify(format(flags & 0xff, '02x')))
 
-
+    #desired: 050400ff
     delay = im.info["duration"]/10
-    delayflag = format(delay & 0xffff, '04x')
-    print delayflag
-    extensionHeader.append(binascii.unhexlify(delayflag))
+    delayflag = format(delay, '04x')
+
+
+    #These have to be reversed for some reason
+    extensionHeader.append(binascii.unhexlify(delayflag[2:]))
+    extensionHeader.append(binascii.unhexlify(delayflag[:2]))
+
+    #transparency data
     extensionHeader.append(binascii.unhexlify(format(transp & 0xff, '02x')))
 
 
     extensionHeader.append(b"\x00")
-    print extensionHeader
-    print binascii.hexlify(header[1])
+
+
     return extensionHeader
 
-def makedelta(fp, sequence, headers):
+def augmentHeader(im):
+    header = binascii.hexlify(getheader(im)[0][0])
+    header = header[:6] + "383961" + header[12:]
+    return [binascii.unhexlify(header)] + getheader(im)[0][1:]
+
+
+def modifyFlagsAndAppendCTable(im, offset = False):
+    #'\x2C   \x00\x00    \x00\x00    \xd4\x01    d\x00   \x00'
+    imageDescriptor = False
+    if(offset):
+        imageDescriptor = binascii.hexlify(getdata(im, offset=offset)[0])[:-2]
+    else:
+        imageDescriptor = binascii.hexlify(getdata(im)[0])[:-2]
+
+    flags = "87" #b10000111 - Use local color table with size 111 (2^8 = 256)
+    imageDescriptor+=flags
+    newDescriptor = [binascii.unhexlify(imageDescriptor)]
+    for val in im.getpalette():
+        newDescriptor.append(binascii.unhexlify(format(val & 0xff, '02x')))
+    if(offset):
+        return newDescriptor + getdata(im, offset=offset)[1:]
+    else:
+        return newDescriptor + getdata(im)[1:]
+
+
+def makedelta(fp, sequence):
     """Convert list of image frames to a GIF animation file"""
 
     frames = 0
@@ -103,12 +134,12 @@ def makedelta(fp, sequence, headers):
         if not previous:
 
             # global header
-
-            for s in getheader(im)[0]:
+            for s in augmentHeader(im):
                 fp.write(s)
             fp.write(b"\x21\xFF\x0B\x4E\x45\x54\x53\x43\x41\x50\x45\x32\x2E\x30\x03\x01\x00\x00\x00") #Application Extension netscape looper
 
-            for s in reconstructHeader(im,headers[frames]) + getdata(im):
+            #Discard the first frame, it is buggy for whatever reason
+            for s in createApplicationExtension(im) + modifyFlagsAndAppendCTable(im.crop((0,0,im.width, im.height)), (0,0)):
                 fp.write(s)
         else:
 
@@ -116,11 +147,10 @@ def makedelta(fp, sequence, headers):
             delta = ImageChops.subtract_modulo(im, previous)
 
             bbox = delta.getbbox()
-
+            print bbox
             if bbox:
-
                 # compress difference
-                for s in reconstructHeader(im,headers[frames]) + getdata(im.crop(bbox), offset = bbox[:2]):
+                for s in createApplicationExtension(im) + modifyFlagsAndAppendCTable(im.crop(bbox), bbox[:2]):
                     fp.write(s)
 
             else:
