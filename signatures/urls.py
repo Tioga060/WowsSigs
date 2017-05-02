@@ -2,14 +2,14 @@ from django.conf.urls import url,include
 from django.conf import settings
 from django.conf.urls.static import static
 #from viewsets import *
-from views import *
+from . import views
 
 from rest_framework import routers
 # this is DRF router for REST API viewsets
 router = routers.DefaultRouter()
 
 # register REST API endpoints with DRF router
-router.register(r'player', PlayerViewSet, r"player")
+router.register(r'player', views.PlayerViewSet, r"player")
 
 
 urlpatterns = [
