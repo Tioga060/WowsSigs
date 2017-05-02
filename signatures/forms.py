@@ -1,4 +1,4 @@
-from djng.forms import NgFormValidationMixin, NgModelFormMixin, AddPlaceholderFormMixin
+from djng.forms import NgFormValidationMixin, NgModelFormMixin
 
 class SignatureForm(NgModelFormMixin, forms.ModelForm):
      """
