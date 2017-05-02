@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from viewsets import *
 from . import views
 from forms import *
+from django.conf.urls.defaults import *
 
 from rest_framework import routers
 # this is DRF router for REST API viewsets
