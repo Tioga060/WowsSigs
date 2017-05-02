@@ -6,7 +6,7 @@ class PlayerViewSet(viewsets.ModelViewSet):
     Contains information about a command-line Unix program.
     '''
     queryset = Player.objects.all()
-    lookup_field = 'id'
+    lookup_field = 'playerid'
     serializer_class = PlayerSerializer
 
     def destroy(self, request, *args, **kwargs):
