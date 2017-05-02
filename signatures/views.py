@@ -7,8 +7,8 @@ from forms import SignatureForm
 from django.views.generic import TemplateView
 
 def default(request):
-    p = Player(username="Jeff",playerid="123",signature={'test':False})
-    p.save()
+    #p = Player(username="Jeff",playerid="123",signature={'test':False})
+    #p.save()
     return HttpResponse("<h1>Resized Gif</h1>")
 
 

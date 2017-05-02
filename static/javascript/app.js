@@ -7,12 +7,12 @@ app.config(function ($stateProvider, $urlRouterProvider, RestangularProvider) {
      // For any unmatched url, send to /route1
      $urlRouterProvider.otherwise("/");
      $stateProvider
-         //.state('index', {
+         .state('index', {
 
-        //     url: "/",
-        //     templateUrl: "/static/html/partials/_signature_list.html",
-        //     controller: "SignatureList"
-        // })
+             url: "/",
+             templateUrl: "/static/html/partials/_signature_list.html",
+             controller: "SignatureList"
+         })
 
         .state('new', {
 
