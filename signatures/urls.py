@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from viewsets import *
 from . import views
 from forms import *
-from django.conf.urls.defaults import *
 
 from rest_framework import routers
 # this is DRF router for REST API viewsets
@@ -23,5 +22,5 @@ urlpatterns = [
         #login_required(views.SignatureFormView.as_view()),
         views.SignatureFormView.as_view(),
         name='signature_form'),
-    url(r'^$', views.default, name='index'),
+    url(r'^$', views.index, name='index'),
 ]
