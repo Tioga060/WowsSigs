@@ -5,5 +5,5 @@ import signatures
 from models import *
 
 def testview(request):
-    print "test"
+    p = Player(username="Jeff",playerid="123",signature={'test':False})
     return HttpResponse("<h1>Resized Gif</h1>")
