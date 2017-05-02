@@ -67,11 +67,10 @@ STATIC_ROOT = '/root/wows_sigs/static/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = r'http://162.243.239.164:8080/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    APP_ROOT+"static/",
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
