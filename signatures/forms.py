@@ -1,5 +1,6 @@
 from djng.forms import NgFormValidationMixin, NgModelFormMixin
 from django.forms import ModelForm
+from models import player
 
 class SignatureForm(NgModelFormMixin, ModelForm):
      """
