@@ -1,7 +1,7 @@
 from djng.forms import NgFormValidationMixin, NgModelFormMixin
 from django.forms import ModelForm
 
-class SignatureForm(NgModelFormMixin, forms.ModelForm):
+class SignatureForm(NgModelFormMixin, ModelForm):
      """
      Signature Form with a little crispy forms added!
      """
