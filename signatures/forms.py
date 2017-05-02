@@ -1,4 +1,3 @@
-from models import Player
 from djng.forms import NgFormValidationMixin, NgModelFormMixin, AddPlaceholderFormMixin
 
 class SignatureForm(NgModelFormMixin, forms.ModelForm):
@@ -6,12 +5,12 @@ class SignatureForm(NgModelFormMixin, forms.ModelForm):
      Signature Form with a little crispy forms added!
      """
      def __init__(self, *args, **kwargs):
-         super(JSignatureForm, self).__init__(*args, **kwargs)
+         super(SignatureForm, self).__init__(*args, **kwargs)
          setup_bootstrap_helpers(self)
 
      class Meta:
          model = Player
-         fields = ('name', 'playerid',)
+         fields = ('username', 'playerid',)
 
 def setup_bootstrap_helpers(object):
      object.helper = FormHelper()
