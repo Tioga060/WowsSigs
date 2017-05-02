@@ -1,5 +1,5 @@
 from models import Player
-from djangular.forms import NgFormValidationMixin, NgModelFormMixin, AddPlaceholderFormMixin
+from djng.forms import NgFormValidationMixin, NgModelFormMixin, AddPlaceholderFormMixin
 
 class SignatureForm(NgModelFormMixin, forms.ModelForm):
      """
