@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from viewsets import *
 from . import views
 
-from rest_framework import routers
+from rest_framework_mongoengine import routers
 # this is DRF router for REST API viewsets
 router = routers.DefaultRouter()
 

@@ -1,4 +1,4 @@
-from rest_framework import viewsets, response
+from rest_framework_mongoengine import viewsets, response
 from models import *
 from serializers import *
 class PlayerViewSet(viewsets.ModelViewSet):
