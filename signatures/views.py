@@ -5,7 +5,5 @@ import signatures
 from models import *
 
 def testview(request):
-    inpath = djangoSettings.MEDIA_ROOT+"backgrounds/test2.gif"
-    outpath = djangoSettings.STATIC_ROOT+"signatures/testout2.gif"
-    signatures.createSignatureGif(inpath, outpath, {})
+    print "test"
     return HttpResponse("<h1>Resized Gif</h1>")
