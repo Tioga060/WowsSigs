@@ -111,7 +111,7 @@ ROOT_URLCONF = 'wows_sigs.urls'
 WSGI_APPLICATION = 'wows_sigs.wsgi.application'
 
 TEMPLATE_DIRS = (
-     os.path.join(APP_ROOT, 'templates'),
+     APP_ROOT+"templates/",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
