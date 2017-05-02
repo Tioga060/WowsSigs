@@ -9,8 +9,8 @@ class PlayerViewSet(viewsets.ModelViewSet):
     lookup_field = 'playerid'
     serializer_class = PlayerSerializer
 
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.get_serializer().destroy(instance)
-        print("Instance destroyed!")
-        return response.Response(status=status.HTTP_204_NO_CONTENT)
+    #def destroy(self, request, *args, **kwargs):
+    #    instance = self.get_object()
+    #    self.get_serializer().destroy(instance)
+    #    print("Instance destroyed!")
+    #    return response.Response(status=status.HTTP_204_NO_CONTENT)
