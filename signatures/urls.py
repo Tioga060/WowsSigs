@@ -22,5 +22,5 @@ urlpatterns = [
         #login_required(views.SignatureFormView.as_view()),
         views.SignatureFormView.as_view(),
         name='signature_form'),
-    url(r'^$', views.testview, name='index'),
+    url(r'^$', views.default, name='index'),
 ]

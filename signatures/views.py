@@ -6,7 +6,7 @@ from models import *
 from forms import SignatureForm
 from django.views.generic import TemplateView
 
-def testview(request):
+def default(request):
     p = Player(username="Jeff",playerid="123",signature={'test':False})
     p.save()
     return HttpResponse("<h1>Resized Gif</h1>")
