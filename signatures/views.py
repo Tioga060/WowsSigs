@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.conf import settings as djangoSettings
 from serializers import *
 from models import *
-from forms import JobForm
+from forms import SignatureForm
 
 def testview(request):
     p = Player(username="Jeff",playerid="123",signature={'test':False})
