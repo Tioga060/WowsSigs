@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^api/', include(router.urls, namespace='api')),
 
     url(r'^signature-form/$',
-        login_required(SignatureFormView.as_view()),
+        login_required(views.SignatureFormView.as_view()),
         name='signature_form'),
 
     url(r'^$', views.testview, name='index'),
