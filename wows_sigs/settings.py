@@ -48,6 +48,8 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+APP_ROOT = '/root/wows_sigs/'
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
 MEDIA_ROOT = '/root/wows_sigs/signatures/resources/'
@@ -109,6 +111,7 @@ ROOT_URLCONF = 'wows_sigs.urls'
 WSGI_APPLICATION = 'wows_sigs.wsgi.application'
 
 TEMPLATE_DIRS = (
+     os.path.join(APP_ROOT, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
