@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from django.conf import settings as djangoSettings
 import signatures
+from rest_framework_mongoengine import viewsets
 from models import *
 
 def testview(request):
