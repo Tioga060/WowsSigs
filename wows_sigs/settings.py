@@ -136,6 +136,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 # A sample logging configuration. The only tangible logging
