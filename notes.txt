@@ -2,3 +2,5 @@ http://www.chrisumbel.com/article/django_python_mongodb_engine_mongo
 Add Clan icon support so commanders can upload their clan icons
 solo and ranked stats
 handle wgapi limit errors
+DO i need this mongo rest stuff? https://medium.com/@vasjaforutube/django-mongodb-django-rest-framework-mongoengine-ee4eb5857b9a
+Using non mongo rest for now

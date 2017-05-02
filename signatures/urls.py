@@ -1,7 +1,7 @@
 from django.conf.urls import url,include
 from django.conf import settings
 from django.conf.urls.static import static
-#from viewsets import *
+from viewsets import *
 from . import views
 
 from rest_framework import routers
@@ -9,7 +9,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 
 # register REST API endpoints with DRF router
-router.register(r'player', views.PlayerViewSet, r"player")
+router.register(r'player', PlayerViewSet, r"player")
 
 
 urlpatterns = [
