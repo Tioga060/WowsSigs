@@ -8,3 +8,5 @@ sudo apt-get install libpng-dev
 sudo apt-get install libjpeg-dev
 django-rest-framework-mongoengine
 djangorestframework<3.3
+django-angular
+djangular
