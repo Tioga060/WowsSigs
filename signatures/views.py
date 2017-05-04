@@ -13,7 +13,7 @@ from django.template import RequestContext
 def index(request):
     #p = Player(username="Jeff",playerid="123",signature={'test':False})
     #p.save()
-    return render_to_response('signatures/index.html', RequestContext(request))
+    return render_to_response('public/index.html', RequestContext(request))
 
 
 
