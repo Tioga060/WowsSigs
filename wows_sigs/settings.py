@@ -142,7 +142,7 @@ INSTALLED_APPS = (
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'#'django.contrib.sessions.serializers.PickleSerializer' #
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer' #'django.contrib.sessions.serializers.JSONSerializer'#
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -177,9 +177,3 @@ LOGGING = {
 LOGIN_URL = '/signatures/openid/login'
 LOGIN_REDIRECT_URL = '/signatures/'
 OPENID_SSO_SERVER_URL = 'https://na.wargaming.net/id'
-AUTHENTICATION_BACKENDS = (
-    'django_openid_auth.auth.OpenIDBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-OPENID_CREATE_USERS = True
-OPENID_UPDATE_DETAILS_FROM_SREG = True
