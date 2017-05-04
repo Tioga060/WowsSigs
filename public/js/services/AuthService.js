@@ -26,7 +26,7 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 			});
 		}
     */
-    callback({'username': "Log in", 'profile':'/auth/wargaming', 'loggedin': false});
+    callback({'username': "Log in", 'profile':'/signatures/auth/wargaming', 'loggedin': false});
 	}
   return {getUser:getUser}
 }]);

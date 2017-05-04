@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'djangular',
     'crispy_forms',
     'djng',
+    'django_openid_auth',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -139,7 +140,7 @@ INSTALLED_APPS = (
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'# 'django.contrib.sessions.serializers.PickleSerializer' #
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -169,3 +170,8 @@ LOGGING = {
         },
     }
 }
+
+#OpenID Settings:
+LOGIN_URL = '/signatures/auth/wargaming/'
+LOGIN_REDIRECT_URL = '/signatures/auth/wargaming/return/'
+OPENID_SSO_SERVER_URL = 'https://na.wargaming.net/id'

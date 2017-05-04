@@ -11,3 +11,4 @@ djangorestframework<3.3
 django-angular
 djangular
 django-crispy-forms
+django-openid-auth

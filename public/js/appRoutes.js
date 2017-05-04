@@ -9,16 +9,14 @@
             controller: 'HomeController'
         })
 
-
-		// nerds page that will use the NerdController
-        .when('/player', {
-            templateUrl: 'views/player.html',
-            controller: 'PlayerController'
-        })
-        .otherwise(
-          {//redirectTo : '/'
+        .when('/signatures/', {
             templateUrl: 'views/home.html',
             controller: 'HomeController'
+        })
+
+        .otherwise(
+          {
+            redirectTo : '/signatures/'
           }
         )
 
