@@ -3,4 +3,4 @@ from models import *
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Player
-        fields = ('playerid', 'username', 'signature')
+        fields = ('playerid', 'username', 'signature', 'cookie')
