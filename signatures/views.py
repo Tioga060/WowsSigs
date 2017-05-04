@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings as djangoSettings
 from serializers import *
 from models import *
+import random
 from forms import SignatureForm
 from django.views.generic import TemplateView
 from django.shortcuts import render_to_response, get_object_or_404
