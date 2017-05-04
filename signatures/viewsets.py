@@ -21,13 +21,8 @@ class PlayerCookieViewSet(viewsets.ModelViewSet):
     '''
     serializer_class = PlayerSerializer
     lookup_field = 'cookie'
-    def list(self, request):
-        queryset = Player.objects.all()
-        serializer = PlayerSerializer(queryset, many=True)
-        return response.Response(serializer.data)
-
     def retrieve(self, request, pk=None):
-        queryset = Player.objects.all()
-        user = django.shortcuts.get_object_or_404(queryset, cookie="")
+        queryset = Player.objects.filter(cookie="")
+        user = django.shortcuts.get_object_or_404(queryset, pk=pk)
         serializer = PlayerSerializer(user)
         return response.Response(serializer.data)
