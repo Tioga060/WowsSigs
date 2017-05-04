@@ -8,17 +8,22 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 			callback(me.currentUser);
 		// retrieve the currentUser and set it as a property on the service
 		else {
-			$http.get('/signatures/api/cookie/').then(function(res){
+			$http.get('/signatures/api/cookie/?format=json').then(function(res){
 			  // set the result to a field on the service
 			  if(res.data){
-				  me.currentUser = res.data;
-				  // call the callback with the retrieved user
-				  //console.log("found him");
-				  //console.log(res.data);
-				  me.currentUser["profile"] = "/player/" +me.currentUser["playerid"];
-				  me.currentUser["loggedin"] = true;
-				  Comment.setSubmitter(me.currentUser["playerid"]);
-				  callback(me.currentUser);
+          thisdata = JSON.parse(res.data)
+          if(thisdata.username){
+  				  me.currentUser = res.data;
+  				  // call the callback with the retrieved user
+  				  //console.log("found him");
+  				  //console.log(res.data);
+  				  me.currentUser["profile"] = "/signatures/";
+  				  me.currentUser["loggedin"] = true;
+  				  callback(me.currentUser);
+          }
+          else{
+  				  callback({'username': "Log in", 'profile':'/auth/wargaming', 'loggedin': false});
+  			  }
 			  }
 			  else{
 				  callback({'username': "Log in", 'profile':'/auth/wargaming', 'loggedin': false});
