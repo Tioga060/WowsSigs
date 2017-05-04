@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <base href="/signatures/public/">
-
   <title>Tioga.moe World of Warships Signatures</title>
 
   <!-- CSS -->
@@ -42,7 +41,6 @@
 
 </head>
 <body ng-app="wows_sigs" ng-controller="MainController">
-<notifications-bar class="notifications" closeIcon="fa fa-times-circle"></notifications-bar>
 <div class="container" >
 
     <!-- HEADER -->
@@ -64,7 +62,7 @@
     </nav>
 	<div class="row">
     <!-- ANGULAR DYNAMIC CONTENT -->
-
+    <div class="col-md-12"ng-view></div>
 	</div>
 
 </div>

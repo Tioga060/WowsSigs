@@ -4,7 +4,7 @@
     $routeProvider
 
         // home page
-        .when('/signatures/public', {
+        .when('/', {
             templateUrl: 'views/home.html',
             controller: 'HomeController'
         })
@@ -16,12 +16,15 @@
             controller: 'PlayerController'
         })
         .otherwise(
-          {redirectTo : '/'}
+          {//redirectTo : '/'
+            templateUrl: 'views/home.html',
+            controller: 'HomeController'
+          }
         )
 
     $locationProvider.html5Mode({
       enabled: true,
-      requireBase: true
+      requireBase: true/// HACK: Offline mode
     });
 
 }]);
