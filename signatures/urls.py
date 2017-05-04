@@ -24,5 +24,5 @@ urlpatterns = [
         views.SignatureFormView.as_view(),
         name='signature_form'),
     url(r'^$', views.index, name='index'),
-    (r'^openid/', include('django_openid_auth.urls')),
+    url(r'^openid/', include('django_openid_auth.urls')),
 ]
