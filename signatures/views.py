@@ -16,8 +16,9 @@ def index(request):
     #p = Player(username="Jeff",playerid="123",signature={'test':False})
     #p.save()
     response = render_to_response('signatures/index.html', RequestContext(request))
+    cookie = str(uuid.uuid1()) + str(random.randint(1, 9999999999))
     if('tmoe_wows_session' not in request.COOKIES):
-        response.set_cookie('tmoe_wows_session',uuid.uuid1())
+        response.set_cookie('tmoe_wows_session',cookie)
     return response
 
 def register_user(request):
@@ -32,7 +33,7 @@ def register_user_callback(request, user_info):
     dashpos = user_info.index("-")
     playerid = user_info[dashpos-10:dashpos]
     username = user_info[dashpos+1:-1]
-    p, created = Player.objects.update_or_create(playerid = playerid)
+    p, created = Player.objects.get_or_create(playerid = playerid)
     p.username = username
 
     if(created):
