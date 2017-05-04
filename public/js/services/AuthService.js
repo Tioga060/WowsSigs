@@ -10,9 +10,9 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 		else {
 			$http.get('/signatures/api/cookie/?format=json').then(function(res){
 			  // set the result to a field on the service
-        console.log(res.data)
-			  if(res.data.username){
-				  me.currentUser = res.data;
+        //console.log(res.data)
+			  if(res.data[0].username){
+				  me.currentUser = res.data[0];
 				  // call the callback with the retrieved user
 				  //console.log("found him");
 				  //console.log(res.data);
