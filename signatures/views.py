@@ -6,7 +6,7 @@ from models import *
 import random
 from forms import SignatureForm
 from django.views.generic import TemplateView
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -26,7 +26,7 @@ def register_user(request):
     result = oauth_views.login_complete(request,register_user_callback)
     if(str(result)!="true"):
         return result
-    return HttpResponse("added")
+    return redirect("/signatures/")
 
 def register_user_callback(request, user_info):
 
