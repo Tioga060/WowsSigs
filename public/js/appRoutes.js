@@ -16,7 +16,9 @@
 
         .otherwise(
           {
-            redirectTo : '/signatures/'
+            //redirectTo : '/signatures/'
+            templateUrl: 'views/home.html',
+            controller: 'HomeController'
           }
         )
 
