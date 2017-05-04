@@ -21,7 +21,7 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 				  callback(me.currentUser);
 			  }
 			  else{
-				  callback({'username': "Log in", 'profile':'/openid/login', 'loggedin': false});
+				  callback({'username': "Log in", 'profile':'/signatures/openid/login', 'loggedin': false});
 			  }
 			});
 		}
