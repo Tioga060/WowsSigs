@@ -21,5 +21,7 @@ class PlayerCookieViewSet(viewsets.ModelViewSet):
     '''
     def list(self, request):
         queryset = Player.objects.filter(cookie="")
+        serializer_class = PlayerSerializer
+        lookup_field = 'cookie'
         serializer = PlayerSerializer(queryset, many=True)
         return response.Response(serializer.data)
