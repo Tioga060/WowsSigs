@@ -14,3 +14,15 @@ class PlayerViewSet(viewsets.ModelViewSet):
     #    self.get_serializer().destroy(instance)
     #    print("Instance destroyed!")
     #    return response.Response(status=status.HTTP_204_NO_CONTENT)
+class PlayerCookieViewSet(viewsets.ModelViewSet):
+    '''
+    Contains information about a command-line Unix program.
+    '''
+    queryset = Player.objects.all()
+    lookup_field = 'cookie'
+    serializer_class = PlayerSerializer
+    def retrieve(self, request, pk='cookie'):
+        queryset = Player.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = PlayerSerializer(user)
+        return response.Response(serializer.data)

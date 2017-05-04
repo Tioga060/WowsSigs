@@ -4,11 +4,11 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 
 	function getUser(callback) {
 		// if the user has already been retrieved then do not do it again, just return the retrieved instance
-		/*if(me.currentUser )
+		if(me.currentUser )
 			callback(me.currentUser);
 		// retrieve the currentUser and set it as a property on the service
 		else {
-			$http.get('/api/cookie/').then(function(res){
+			$http.get('/signatures/api/cookie/').then(function(res){
 			  // set the result to a field on the service
 			  if(res.data){
 				  me.currentUser = res.data;
@@ -25,8 +25,7 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 			  }
 			});
 		}
-    */
-    callback({'username': "Log in", 'profile':'/signatures/openid/auth/wargaming', 'loggedin': false});
+
 	}
   return {getUser:getUser}
 }]);

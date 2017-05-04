@@ -13,6 +13,7 @@ router = routers.DefaultRouter()
 
 # register REST API endpoints with DRF router
 router.register(r'player', PlayerViewSet, r"player")
+router.register(r'cookie',PlayerCookieViewSet,r"cookie")
 
 
 urlpatterns = [
