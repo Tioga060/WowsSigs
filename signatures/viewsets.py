@@ -21,7 +21,7 @@ class PlayerCookieViewSet(viewsets.ModelViewSet):
     '''
     serializer_class = PlayerSerializer
     def list(self, request):
-        queryset = Player.objects.filter(cookie="")
+        queryset = Player.objects.filter(cookie=request.COOKIES['tmoe_wows_session'])
 
         lookup_field = 'cookie'
         serializer = PlayerSerializer(queryset, many=True)
