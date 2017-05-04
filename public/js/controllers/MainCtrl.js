@@ -6,7 +6,6 @@ angular.module('MainCtrl', []).controller('MainController', ['$scope','Auth','$w
 	Auth.getUser(function(user){
 		$scope.currentUser = user;
 	});
-	console.log("we did it")
 	$scope.$watch('currentUser',function(){
 		//console.log("user changed");
 	});

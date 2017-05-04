@@ -12,19 +12,13 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 			  // set the result to a field on the service
         console.log(res)
 			  if(res.data){
-          thisdata = JSON.parse(res.data)
-          if(thisdata.username){
-  				  me.currentUser = res.data;
-  				  // call the callback with the retrieved user
-  				  //console.log("found him");
-  				  //console.log(res.data);
-  				  me.currentUser["profile"] = "/signatures/";
-  				  me.currentUser["loggedin"] = true;
-  				  callback(me.currentUser);
-          }
-          else{
-  				  callback({'username': "Log in", 'profile':'/auth/wargaming', 'loggedin': false});
-  			  }
+				  me.currentUser = res.data;
+				  // call the callback with the retrieved user
+				  //console.log("found him");
+				  //console.log(res.data);
+				  me.currentUser["profile"] = "/signatures/";
+				  me.currentUser["loggedin"] = true;
+				  callback(me.currentUser);
 			  }
 			  else{
 				  callback({'username': "Log in", 'profile':'/auth/wargaming', 'loggedin': false});
