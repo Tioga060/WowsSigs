@@ -10,6 +10,7 @@ angular.module('AuthService', []).service('Auth',['$http','$q', function($http,$
 		else {
 			$http.get('/signatures/api/cookie/?format=json').then(function(res){
 			  // set the result to a field on the service
+        console.log(res)
 			  if(res.data){
           thisdata = JSON.parse(res.data)
           if(thisdata.username){
