@@ -174,6 +174,4 @@ LOGGING = {
 }
 
 #OpenID Settings:
-LOGIN_URL = '/signatures/openid/login'
-LOGIN_REDIRECT_URL = '/signatures/'
 OPENID_SSO_SERVER_URL = 'https://na.wargaming.net/id'
