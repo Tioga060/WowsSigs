@@ -10,20 +10,34 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django_openid_auth import views as oauth_views
+import uuid
 
 def index(request):
     #p = Player(username="Jeff",playerid="123",signature={'test':False})
     #p.save()
-    return render_to_response('signatures/index.html', RequestContext(request))
+    response = render_to_response('signatures/index.html', RequestContext(request))
+    if('tmoe_wows_session' not in request.COOKIES):
+        response.set_cookie('tmoe_wows_session',uuid.uuid1())
+    return response
 
 def register_user(request):
-    return oauth_views.login_complete(request,register_user_callback)
-    
-def register_user_callback(user_info):
+    result = oauth_views.login_complete(request,register_user_callback)
+    if(str(result)!="true"):
+        return result
+    return HttpResponse("added")
+
+def register_user_callback(request, user_info):
+
+
     dashpos = user_info.index("-")
     playerid = user_info[dashpos-10:dashpos]
     username = user_info[dashpos+1:-1]
-    p = Player(username=username,playerid=playerid,signature={'test':False})
+    p, created = Player.objects.update_or_create(playerid = playerid)
+    p.username = username
+
+    if(created):
+        p.signature={'test':False}
+    p.cookie = request.COOKIES['tmoe_wows_session']
     p.save()
 
 class SignatureFormView(TemplateView):
