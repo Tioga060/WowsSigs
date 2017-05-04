@@ -22,6 +22,8 @@ DATABASES = {
     },
 }
 
+
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -175,3 +177,9 @@ LOGGING = {
 LOGIN_URL = '/signatures/openid/login'
 LOGIN_REDIRECT_URL = '/signatures/'
 OPENID_SSO_SERVER_URL = 'https://na.wargaming.net/id'
+AUTHENTICATION_BACKENDS = (
+    'django_openid_auth.auth.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+OPENID_CREATE_USERS = True
+OPENID_UPDATE_DETAILS_FROM_SREG = True
