@@ -25,5 +25,5 @@ urlpatterns = [
         name='signature_form'),
     url(r'^$', views.index, name='index'),
     url(r'^openid/', include('django_openid_auth.urls')),
-    url(r'^openid/complete/$', views.register_user, name='register_user'),
+    url(r'^openid/complete/$', views.register_user, name='openid-complete'),
 ]
