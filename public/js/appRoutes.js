@@ -4,7 +4,7 @@
     $routeProvider
 
         // home page
-        .when('/', {
+        .when('/signatures/public', {
             templateUrl: 'views/home.html',
             controller: 'HomeController'
         })
