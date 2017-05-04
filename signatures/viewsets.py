@@ -19,9 +19,7 @@ class PlayerCookieViewSet(viewsets.ModelViewSet):
     '''
     Contains information about a command-line Unix program.
     '''
-    serializer_class = PlayerSerializer
-    def retrieve(self, request, pk=None):
+    def list(self, request):
         queryset = Player.objects.filter(cookie="")
-        user = django.shortcuts.get_object_or_404(queryset, pk=pk)
-        serializer = PlayerSerializer(user)
+        serializer = PlayerSerializer(queryset, many=True)
         return response.Response(serializer.data)
