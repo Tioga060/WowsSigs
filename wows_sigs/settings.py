@@ -175,3 +175,4 @@ LOGGING = {
 
 #OpenID Settings:
 OPENID_SSO_SERVER_URL = 'https://na.wargaming.net/id'
+USER_MODEL = "Player"
