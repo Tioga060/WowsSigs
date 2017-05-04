@@ -19,6 +19,8 @@ class PlayerCookieViewSet(viewsets.ModelViewSet):
     '''
     Contains information about a command-line Unix program.
     '''
+    serializer_class = PlayerSerializer
+    lookup_field = 'cookie'
     def list(self, request):
         queryset = Player.objects.all()
         serializer = PlayerSerializer(queryset, many=True)
